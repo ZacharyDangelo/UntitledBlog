@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to the unnamed blog!</title>
+  <meta charset="utf-8" />
+  <title>Untitled Blog</title>
+    <!--
+  <link type="text/css" rel="stylesheet"
+       href="{{ url_for('static',
+                        filename='style2.css')}}" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    -->
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>getting back into things I suppose</p>
+
+{% block body %}{% endblock %}
+
 </body>
 </html>

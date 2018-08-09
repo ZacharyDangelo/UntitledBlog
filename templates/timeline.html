@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "master.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class="timeline">
+    <ul class="entries">
+        {% for entry in entries %}
+            <li><h2>{{ entry.title }}</h2>{{ entry.content }}</li>
+        {% else %}
+            <li><h2>No Posts found.</h2>Hello there, if you're seeing this the template could not find any posts in the database.
+            <br>Try checking your SQL query and database data.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
