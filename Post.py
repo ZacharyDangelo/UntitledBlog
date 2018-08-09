@@ -40,39 +40,5 @@ class Post:
             if self.tags != other.tags:
                 return False
             return True
-        except:
-            return False
-
-    def serialize(self, file_name=''):
-        print("Serializing to file:"+file_name)
-        if file_name is '':
-            file_name=self.title.title()+ '.json'
-            file_name = file_name.replace(' ','')
-        try:
-            json_out = open(file_name,'w')
-            json_out.write(jsonpickle.encode(self))
-        except:
-            print("Error in 'Post' class while writing post to JSON file.")
-        print("Done serializing")
-        return file_name
-
-    @staticmethod
-    def deserialize(file_name):
-        print("Reading from file:"+file_name)
-        try:
-            json_in = open(file_name, 'r').read()
-            return jsonpickle.decode(json_in)
         except IOError:
-            print("Error in 'Post' class while reading post from JSON file.")
-        print("Done reading.")
-
-    @staticmethod
-    def test_serialization():
-        newPost = Post()
-        newPost.tags.append("Hello World!")
-        newPost.title = "Welcome to my bloggo"
-        newPost.post_date = str(dt.datetime.now())
-        newPost.content = 'Words go here!'
-        fileName = newPost.serialize()
-        afterSer = Post.deserialize(fileName)
-        return (afterSer == newPost)
+            return False
