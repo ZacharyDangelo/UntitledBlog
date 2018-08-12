@@ -1,17 +1,20 @@
 """
-This file contains the class that handles Posts.
-Uses flat JSON files to store posts. database is not needed.
-TODO:Find a good file naming convention
-TODO:CONSISTENT CODE STYLE.
-FOLLOW PEP8.
+This class will contain methods for interacting with Posts on the site.
+Need to plan out how I want to do that, and whether we need other classes as well.
 
+Maybe there is a need to think of it as
 
-One thing to think about, should the JSON file contain the content itself, or simply a path to the .html file?
-Probably the latter if i had to guess. This allows faster parsing of the JSON for the purpose of ordering posts
-as well as just more abstraction and encapsulation?
+Presentation Layer
+Logic Layer
+Data Layer
+
+??? does this thinking work ???
 """
-import jsonpickle
+
+#  IMPORT STATEMENTS
 import datetime as dt
+import sqlite3
+#  END IMPORTS
 
 
 class Post:
@@ -20,9 +23,9 @@ class Post:
     post_date = ''
     content = ''
 
-    def __init__(self,title="DefaultTitle",content="DefaultContent"):
-        self.title=title
-        self.content=content
+    def __init__(self, title="DefaultTitle", content="DefaultContent"):
+        self.title = title
+        self.content = content
         post_date = str(dt.datetime.now())
 
     def __eq__(self, other):
@@ -42,3 +45,26 @@ class Post:
             return True
         except IOError:
             return False
+
+    @staticmethod
+    def search_posts(db_conn):
+        if isinstance(db_conn, sqlite3.Connection):
+            db_conn.execute("")
+        else:
+            print("Error opening database connection while attempting to search posts.")
+
+    @staticmethod
+    def get_comments(db_conn, post_id):
+        if isinstance(db_conn, sqlite3.Connection):
+            pass  # Insert sql statement lul
+        else:
+            print("Error opening comment stream.")
+
+    @staticmethod
+    def get_tags(db_conn, post_id):
+        if isinstance(db_conn, sqlite3.Connection):
+            pass  # Insert sql statement here
+        else:
+            print("Error opening tag information.")
+
+
