@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+{% block head %}
+{% block title %}{{ post.title }} {% endblock %}
+{% endblock %}
+
+{% block body %}
+{% for curr_post in post %}
+<div class="entries">
+<h1>{{ curr_post.title }}</h1>
+<p>{{ curr_post.content }}</p>
+</div>
+{% endfor %}
+{% endblock %}

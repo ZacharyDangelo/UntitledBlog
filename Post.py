@@ -18,16 +18,6 @@ import sqlite3
 
 
 class Post:
-    tags = []
-    title = ''
-    post_date = ''
-    content = ''
-
-    def __init__(self, title="DefaultTitle", content="DefaultContent"):
-        self.title = title
-        self.content = content
-        post_date = str(dt.datetime.now())
-
     def __eq__(self, other):
         try:
             if self.title != other.title:
@@ -47,16 +37,17 @@ class Post:
             return False
 
     @staticmethod
-    def search_posts(db_conn):
+    def search_posts(db_conn, search_term):
         if isinstance(db_conn, sqlite3.Connection):
-            db_conn.execute("")
+            return db_conn.execute("select title,content from Posts where PostID ="+search_term).fetchall()
         else:
             print("Error opening database connection while attempting to search posts.")
 
     @staticmethod
     def get_comments(db_conn, post_id):
         if isinstance(db_conn, sqlite3.Connection):
-            pass  # Insert sql statement lul
+            return db_conn.execute("select Poster,content from Comments where PostID="+post_id
+                                   + " order by CommentID desc").fetchall()
         else:
             print("Error opening comment stream.")
 

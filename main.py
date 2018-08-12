@@ -35,10 +35,9 @@ def close_db(error):
 
 
 @app.route('/')
-def show_entries():
+def show_timeline():
     db = get_db()
-    print(type(db))
-    cur = db.execute('select title, content from Posts order by PostID desc')
+    cur = db.execute('select title, content, PostID from Posts order by PostID desc')
     entries = cur.fetchall()
     return render_template('timeline.html', entries=entries)
 
@@ -48,6 +47,19 @@ def add_entry():
     db = get_db()
     db.execute('insert into Posts (title, content) values (?, ?)',
                [request.form['title'], request.form['content']])
+
+
+@app.route('/post/<post_id>', methods=['GET'])
+def view_post(post_id):
+    db = get_db()
+    cur = db.execute('select title, content from Posts where PostID =' + post_id)
+    fetched_post = cur.fetchall()
+    return render_template('view_post.html', post=fetched_post)
+
+
+@app.errorhandler(404)
+def not_found_error():  # TODO:Create HTML template for 404 page.
+    show_timeline()
 
 
 if __name__ == "__main__":

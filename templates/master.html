@@ -2,17 +2,12 @@
 <html lang='en'>
 <head>
   <meta charset="utf-8" />
-  <title>Untitled Blog</title>
-    <!--
+  <title>{% block title %}{% endblock %}</title>
   <link type="text/css" rel="stylesheet"
        href="{{ url_for('static',
-                        filename='style2.css')}}" />
-    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-    -->
+                        filename='style.css')}}" />
 </head>
 <body>
-
 {% block body %}{% endblock %}
-
 </body>
 </html>
