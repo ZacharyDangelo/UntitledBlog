@@ -1,8 +1,7 @@
 
 
 #  IMPORT STATEMENTS
-import Post
-import os, sqlite3
+import os, sqlite3, Post
 from flask import Flask
 from flask import g, url_for, render_template, session, abort, request
 #  END IMPORT STATEMENTS
@@ -51,9 +50,7 @@ def add_entry():
 
 @app.route('/post/<post_id>', methods=['GET'])
 def view_post(post_id):
-    db = get_db()
-    cur = db.execute('select title, content from Posts where PostID =' + post_id)
-    fetched_post = cur.fetchall()
+    fetched_post = Post.get_post(get_db(), post_id)
     return render_template('view_post.html', post=fetched_post)
 
 
