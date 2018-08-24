@@ -7,13 +7,19 @@
        href="{{ url_for('static',
                         filename='style.css')}}" />
 </head>
+
+
 <body id="container">
+
 <div id="header">
 <img src="{{ url_for('static', filename= 'banner.png') }}" height=200px width = 50% id="banner">
-
+</div>
+<hr>
+<div id="header_links">
+Home     Link      Test     Yup    More    Links
 
 </div>
-
+<hr>
 
 {% block body %}{% endblock %}
 </body>

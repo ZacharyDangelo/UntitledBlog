@@ -1,27 +1,45 @@
 #container{
     position: relative;
-    background-color: #3c4242
-
+    background-color: #3c4242;
 }
 
+
+#header {
+    position: relative;
+    width: calc(100vw - 40vw);
+    background-color: rgba(192,192,192,.6);
+    text-align: center;
+    left: 20%;
+}
+
+#banner {
+    position:relative;
+    border-radius: 50px;
+    width: calc(100vw - 45vw);
+    height: 150px;
+}
+
+#header_links {
+
+
+
+}
 
 .timeline{
     position: relative;
     left: 20px;
     right: 20px;
-    top: 100px;
+    top: 200px;
     background-color: rgba(201,192,13,.8)
 
 }
 
 .entries {
     position: relative;
-
     left: 20px;
     right: 20px;
-    top: 40px;
+    top: 10px;
     bottom: 40px;
-
 
     padding-top: 10px;
     padding-bottom: 40px;
@@ -33,17 +51,5 @@
 }
 
 
-#header {
-    position: relative;
-    width: calc(100vw - 25vw);
-    height: 20px;
-    background-color: rgb(255,0,0);
-    left: calc(100vw - 75vw);
-    text-align: center;
-}
-
-#banner {
-    border-radius: 50px;
-}
 
 
